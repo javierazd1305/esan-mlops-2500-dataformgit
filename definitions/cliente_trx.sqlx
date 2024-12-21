@@ -1,0 +1,22 @@
+-- This is an example SQLX file to help you learn the basics of Dataform.
+-- Visit https://cloud.google.com/dataform/docs/sql-workflows for more information on how to configure your SQL workflow.
+
+-- You can delete this file, then commit and push your changes to your repository when you are ready.
+
+-- Config blocks allow you to configure, document, and test your data assets.
+
+
+-- The rest of a SQLX file contains your SELECT statement used to create the table.
+config { type: "table", schema: "esanmlops2500dataset" }
+
+select
+  c.periodo_creacion,
+  c.tipo_producto,
+  t.periodo,
+  t.id_cliente,
+  t.monto_1m
+from
+  ${ref("transacciones")} t  -- Referencia a cliente.sqlx
+join
+  ${ref("cliente")} c  -- Referencia a transacciones.sqlx
+on c.id_cliente = t.id_cliente

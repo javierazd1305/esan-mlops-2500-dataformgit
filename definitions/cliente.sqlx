@@ -4,13 +4,10 @@
 -- You can delete this file, then commit and push your changes to your repository when you are ready.
 
 -- Config blocks allow you to configure, document, and test your data assets.
-config {
-  type: "view", // Creates a view in BigQuery. Try changing to "table" instead.
-  columns: {
-    test: "A description for the test column", // Column descriptions are pushed to BigQuery.
-  }
-}
+
 
 -- The rest of a SQLX file contains your SELECT statement used to create the table.
+config { type: "table", schema: "esanmlops2500dataset" }
 
-SELECT 1 as test
+select *
+from `esan-mlops-2500.esanmlops2500dataset.cliente`
